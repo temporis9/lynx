@@ -69,7 +69,7 @@ namespace MvcApplication1.Controllers
                 MedicalCasesDataClassesDataContext mcDCtx = new MedicalCasesDataClassesDataContext();
                 mcDCtx.Cases.InsertOnSubmit(model);
                 mcDCtx.SubmitChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Edit", new { id = model.Id });
             }
             catch
             {
@@ -82,7 +82,9 @@ namespace MvcApplication1.Controllers
 
         public ActionResult Edit(int id)
         {
-            return View();
+            MedicalCasesDataClassesDataContext mcDataContext = new MedicalCasesDataClassesDataContext();
+            Case caseModel = mcDataContext.Cases.Single(u => u.Id == id);
+            return View(caseModel);
         }
 
         //

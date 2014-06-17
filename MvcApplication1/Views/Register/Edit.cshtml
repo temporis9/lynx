@@ -1,18 +1,19 @@
 ﻿@model MvcApplication1.Models.Case
 
 @{
-    ViewBag.Title = "Create case";
+    ViewBag.Title = "Edit case";
 }
 
 <h2>@ViewBag.Title</h2>
 
-@using (Html.BeginForm())
-{
+@using (Html.BeginForm()) {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
 
     <fieldset>
         <legend>Case</legend>
+
+        @Html.HiddenFor(model => model.Id)
 
         <div class="editor-label">
             @Html.LabelFor(model => model.Name)
@@ -27,20 +28,20 @@
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.Date)
-            @Html.ValidationMessageFor(model => model.Date)
+            @Html.ValidationMessageFor(model => model.Date, "Zmień '-' na '/' w przeciwnym wypadku nieprawidłowy format")
         </div>
 
-        <div class="editor-label">
-            @*Html.LabelFor(model => model.userId)*@
-        </div>
-        <div class="editor-field">@*Culture :: @UICulture
-            @Html.DisplayTextFor(model => model.userId)*@
+        @*<div class="editor-label">
+            @Html.LabelFor(model => model.userId)
+        </div>*@
+        <div class="editor-field">
             @Html.HiddenFor(model => model.userId)
+            @*Html.EditorFor(model => model.userId)*@
             @Html.ValidationMessageFor(model => model.userId)
         </div>
 
         <p>
-            <input type="submit" value="Create" />
+            <input type="submit" value="Save" />
         </p>
     </fieldset>
 }
