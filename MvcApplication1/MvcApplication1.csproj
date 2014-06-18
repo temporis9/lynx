@@ -278,6 +278,10 @@
     <Content Include="Scripts\knockout-2.2.0.debug.js" />
     <Content Include="Scripts\knockout-2.2.0.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="SQLScripts\dbo.Cases.sql" />
+    <Content Include="SQLScripts\dbo.CaseSymptoms.sql" />
+    <Content Include="SQLScripts\dbo.Symptoms.sql" />
+    <Content Include="SQLScripts\dbo.Users.sql" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -325,7 +329,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="SQLScripts\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
