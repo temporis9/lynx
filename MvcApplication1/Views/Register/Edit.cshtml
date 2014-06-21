@@ -23,13 +23,16 @@
             @Html.ValidationMessageFor(model => model.Name)
         </div>
 
-        <div class="editor-label">
+        <div class="editor-label ">
             @Html.LabelFor(model => model.Date)
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.Date)
             @Html.ValidationMessageFor(model => model.Date, "Zmień '-' na '/' w przeciwnym wypadku nieprawidłowy format")
         </div>
+
+        <div id="casesymptoms" class="float-right"></div>
+        <div id="symptoms" class="float-right"></div>
 
         @*<div class="editor-label">
             @Html.LabelFor(model => model.userId)
@@ -51,5 +54,14 @@
 </div>
 
 @section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
+    @*Scripts.Render("~/bundles/jqueryval")*@
+    <script type="text/javascript">
+        jQuery('#symptoms').load('@Url.Action("IndexAjax", "Symptoms") #inter', function () {
+            jQuery('#symptoms .rowdata').draggable({revert: true});
+        });
+        jQuery('#casesymptoms').load('@Url.Action("IndexAjax", "Symptoms") #inter');
+        jQuery(document).ready(function () {
+            console.log("ready!")
+        })
+    </script>
 }
