@@ -1,0 +1,40 @@
+﻿@model IEnumerable<MvcApplication1.Models.CaseSymptom>
+
+@{
+    ViewBag.Title = "IndexAjax";
+}
+
+<h2>IndexAjax</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<div id="inter">
+    <div class="caption">Table for cases's symptoms</div>
+    <div id="" class="dropzone" title="">
+       
+    </div>
+</div>
+    @*@<table>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.symptomId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.caseId)
+                </th>
+            </tr>
+
+        @foreach (var item in Model) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.symptomId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.caseId)
+                </td>
+            </tr>
+        }
+
+        </table>
+    *@

@@ -1,0 +1,8 @@
+#casesymptoms, #symptoms {
+    width: 250px;
+}
+.rowdata, .dropzone {
+    height:50px;
+    background-color: aliceblue;
+    border: 1px dashed blue;
+}

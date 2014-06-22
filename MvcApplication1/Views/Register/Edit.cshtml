@@ -57,9 +57,34 @@
     @*Scripts.Render("~/bundles/jqueryval")*@
     <script type="text/javascript">
         jQuery('#symptoms').load('@Url.Action("IndexAjax", "Symptoms") #inter', function () {
-            jQuery('#symptoms .rowdata').draggable({revert: true});
+            jQuery('#symptoms .rowdata').draggable({ revert: 'invalid' });
+            console.log("Symptoms ready!")
         });
-        jQuery('#casesymptoms').load('@Url.Action("IndexAjax", "Symptoms") #inter');
+        jQuery('#casesymptoms').load('@Url.Action("IndexAjax", "CaseSymptoms") #inter', function () {
+            jQuery('#casesymptoms .dropzone').droppable({
+                drop: function (event, ui) {
+                    jQuery(this)
+                    .addClass("ui-state-highlight");
+                    var id = ui.draggable[0].id;
+                    console.log('@Url.Action("Edit", "CaseSymptoms")')
+                    jQuery.post(
+                        '@Url.Action("Edit", "CaseSymptoms")',
+                        {
+                            id      : id,
+                            userID  : 1
+                        },
+                        function (data) {
+                            var part = jQuery(data).filter('div#body').find('section.content-wrapper').html().trim();
+                            jQuery('#casesymptoms .dropzone').append('<div/>').html(part);
+                            //part.find("div");
+                            console.log(part);
+                        }
+                    )
+                    console.log("Case symptoms dropped!");
+                }
+            });
+            console.log("Case symptoms ready!")
+        });
         jQuery(document).ready(function () {
             console.log("ready!")
         })

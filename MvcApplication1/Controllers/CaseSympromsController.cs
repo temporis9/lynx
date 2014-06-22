@@ -7,20 +7,29 @@ using MvcApplication1.Models;
 
 namespace MvcApplication1.Controllers
 {
-    public class CaseSympromsController : Controller
+    public class CaseSymptomsController : Controller
     {
         //
         // GET: /CaseSymproms/
 
-        public ActionResult Index(int id)
+        public ActionResult Index()
         {
-            MedicalCasesDataClassesDataContext mcDataContext = new MedicalCasesDataClassesDataContext();
+            /*MedicalCasesDataClassesDataContext mcDataContext = new MedicalCasesDataClassesDataContext();
             var symptomsData = from s in mcDataContext.Symptoms
                            where s.Id == id
-                           select s;
+                           select s;*/
             return View();
         }
 
+
+        public ActionResult IndexAjax()
+        {
+            /*MedicalCasesDataClassesDataContext mcDataContext = new MedicalCasesDataClassesDataContext();
+            var symptomsData = from s in mcDataContext.Symptoms
+                               where s.Id == id
+                               select s;*/
+            return View();
+        }
         //
         // GET: /CaseSymproms/Details/5
 
@@ -67,13 +76,14 @@ namespace MvcApplication1.Controllers
         // POST: /CaseSymproms/Edit/5
 
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(int id, int userId)
         {
             try
             {
                 // TODO: Add update logic here
 
-                return RedirectToAction("Index");
+                //return RedirectToAction("Index");
+                return View(new { error = false, message = "Symptom added successfully" });
             }
             catch
             {
