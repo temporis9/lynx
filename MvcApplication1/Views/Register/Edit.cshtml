@@ -57,7 +57,7 @@
     @*Scripts.Render("~/bundles/jqueryval")*@
     <script type="text/javascript">
         jQuery('#symptoms').load('@Url.Action("IndexAjax", "Symptoms") #inter', function () {
-            jQuery('#symptoms .rowdata').draggable({ revert: 'invalid' });
+            jQuery('#symptoms .rowdata').draggable({ revert: 'invalid', snap: '.dropzone', snapMode: 'inner' });
             console.log("Symptoms ready!")
         });
         jQuery('#casesymptoms').load('@Url.Action("IndexAjax", "CaseSymptoms") #inter', function () {
@@ -75,7 +75,7 @@
                         },
                         function (data) {
                             var part = jQuery(data).filter('div#body').find('section.content-wrapper').html().trim();
-                            jQuery('#casesymptoms .dropzone').append('<div/>').html(part);
+                            jQuery('#casesymptoms .dropzone').append(part);//.html(part);
                             //part.find("div");
                             console.log(part);
                         }

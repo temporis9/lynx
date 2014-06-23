@@ -83,7 +83,9 @@ namespace MvcApplication1.Controllers
                 // TODO: Add update logic here
 
                 //return RedirectToAction("Index");
-                return View(new { error = false, message = "Symptom added successfully" });
+                ViewBag.error = false;
+                ViewBag.message = "Symptoms stored.";
+                return View();
             }
             catch
             {
