@@ -76,19 +76,26 @@ namespace MvcApplication1.Controllers
         // POST: /CaseSymproms/Edit/5
 
         [HttpPost]
-        public ActionResult Edit(int id, int userId)
+        public ActionResult Edit(int symptomId, int caseId)
         {
             try
             {
                 // TODO: Add update logic here
-
                 //return RedirectToAction("Index");
+                MedicalCasesDataClassesDataContext mcDCtx = new MedicalCasesDataClassesDataContext();
+                CaseSymptom model = new CaseSymptom();
+                model.caseId = caseId;
+                model.symptomId = symptomId;
+                mcDCtx.CaseSymptoms.InsertOnSubmit(model);
+                mcDCtx.SubmitChanges();
                 ViewBag.error = false;
                 ViewBag.message = "Symptoms stored.";
                 return View();
             }
             catch
             {
+                ViewBag.error = true;
+                ViewBag.message = "Symptoms not added.";
                 return View();
             }
         }

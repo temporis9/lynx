@@ -56,7 +56,7 @@
 @section Scripts {
     @*Scripts.Render("~/bundles/jqueryval")*@
     <script type="text/javascript">
-        jQuery('#symptoms').load('@Url.Action("IndexAjax", "Symptoms") #inter', function () {
+        jQuery('#symptoms').load('@Url.Action("IndexAjax", "Symptoms", new { caseId = Model.Id }) #inter', function () {
             jQuery('#symptoms .rowdata').draggable({ revert: 'invalid', snap: '.dropzone', snapMode: 'inner' });
             console.log("Symptoms ready!")
         });
@@ -70,8 +70,8 @@
                     jQuery.post(
                         '@Url.Action("Edit", "CaseSymptoms")',
                         {
-                            id      : id,
-                            userID  : 1
+                            symptomId      : id,
+                            caseId  : @Model.Id
                         },
                         function (data) {
                             var part = jQuery(data).filter('div#body').find('section.content-wrapper').html().trim();
